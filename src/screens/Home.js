@@ -12,7 +12,7 @@ export default function Home(props) {
     const [genreList, setGenreList] = useState([])
     const [genreSelect, setGenreSelect] = useState(28)
     const [genreMovies, setGenreMovies] = useState(null)
-    console.log(genreMovies)
+    
 
     useEffect(async() => {
         getNewsMoviesApi().then((response) => {
@@ -28,7 +28,7 @@ export default function Home(props) {
 
     useEffect(() => {
         getGenreMoviesApi(genreSelect).then((response) => {
-        setGenreMovies(response.results)    
+            setGenreMovies(response.results)    
         })
     }, [genreSelect])
 
@@ -46,11 +46,14 @@ export default function Home(props) {
             )}
 
             <View style = {styles.genres}>
-                <Title style = {styles.genresTitle}> Peliculas por genero</Title>
-                <ScrollView horizontal showsHorizontalScrollIndicator = {false}
+                <Title style = {styles.genresTitle}>Peliculas por genero</Title>
+                <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator = {false}
                     style = {styles.genreList}>
                     {map(genreList,(genre) => (
-                        <Text key = {genre.id}
+                        <Text
+                            key = {genre.id}
                             style = {[styles.genre,
                                 {color: genre.id !== genreSelect ? "#8697a5": "#fff"}]}
                             onPress = {() => onChangeGenre(genre.id)}>

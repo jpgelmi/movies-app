@@ -57,7 +57,8 @@ export default function StackNavigator(props){
                 component = {Movie}
                 options = {{title: "",
                         headerLeft: ()=> buttonLeft("movie"),
-                        headerRight: () =>buttonRigth()}}
+                        headerRight: () =>buttonRigth(),
+                        headerTransparent: true }}
                 />
         <Stack.Screen
                 name = "news"
@@ -65,7 +66,7 @@ export default function StackNavigator(props){
                 options = {{title: "Nuevas Peliculas",
                         headerLeft: ()=> buttonLeft("news"),
                         headerRight: () =>buttonRigth()}}
-                />
+                /> 
         <Stack.Screen
                 name = "popular"
                 component = {Popular}

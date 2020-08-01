@@ -21,7 +21,7 @@ export default function CarouselMulti(props){
         <Carousel
             layout = {"default"}
             data = {data}
-            renderItem = {(item)=> <RenderItem data = {item} navigation = {navigation}/> }
+            renderItem = {(item) => <RenderItem data = {item} navigation = {navigation}/> }
             sliderWidth = {width}
             itemWidth = {ITEM_WIDTH}
             firstItem = {1}
@@ -32,10 +32,10 @@ export default function CarouselMulti(props){
     )
 } 
 
-function RenderItem (props){
-    const {data, navigation} = props
-    const {id, title, poster_path} = data.item
-    const imageUrl = `${BASE_PATH_IMG}/w500${poster_path}`
+function RenderItem(props) {
+    const {data, navigation} = props;
+    const {id, title, poster_path} = data.item;
+    const imageUrl = `${BASE_PATH_IMG}/w500${poster_path}`;
 
     const onNavigation = () => {
         navigation.navigate("movie", {id})
@@ -44,13 +44,13 @@ function RenderItem (props){
     console.log(imageUrl)
 
     return(
-        <TouchableWithoutFeedback onPress = {onNavigation} style = {styles.card}>
-            <>
-                <Image source = {{ uri:imageUrl }} styles = {styles.image}/>
+        <TouchableWithoutFeedback onPress = {onNavigation} >
+            <View style = {styles.card}>
+                <Image styles = {styles.image} source = {{uri:imageUrl}}/>
                 <Title style = {styles.title} numberOfLines = {1}>
                     {title}
-                </Title>
-            </>
+                </Title> 
+            </View>
         </TouchableWithoutFeedback>
     )
 }
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
     },
     image: {
-        width: "85%",
+        width: 100,
         height: 200,
         borderRadius: 20,
     },
     title: {
         marginHorizontal: 10,
-        marginTop: 10,
+        marginTop: 200,
         fontSize: 16
     }
-})
+}) 
