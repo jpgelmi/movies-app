@@ -40,19 +40,17 @@ function RenderItem(props) {
     const onNavigation = () => {
         navigation.navigate("movie", {id})
     } 
-
-    console.log(imageUrl)
-
+    
     return(
         <TouchableWithoutFeedback onPress = {onNavigation} >
             <View style = {styles.card}>
-                <Image styles = {styles.image} source = {{uri:imageUrl}}/>
+                <Image style = {styles.image} source = {{uri:imageUrl}}/>
                 <Title style = {styles.title} numberOfLines = {1}>
                     {title}
                 </Title> 
             </View>
         </TouchableWithoutFeedback>
-    )
+    ) 
 }
 
 const styles = StyleSheet.create({
@@ -66,13 +64,13 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
     },
     image: {
-        width: 100,
+         width: 100,
         height: 200,
         borderRadius: 20,
     },
     title: {
         marginHorizontal: 10,
-        marginTop: 200,
+        marginTop: 20,
         fontSize: 16
     }
 }) 

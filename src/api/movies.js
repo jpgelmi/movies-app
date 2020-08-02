@@ -62,3 +62,14 @@ export function getMovieByIdApi(idMovie){
             return result
         })
 } 
+
+export function getVideoMovieApi(idMovie){
+    const url = `${API_HOST}/movie/${idMovie}/videos?api_key=${API_KEY}&language=${LANG}`
+    return fetch(url)
+        .then((response) => {
+            return response.json()
+        })
+        .then((result) => {
+            return result
+        }) 
+} 
