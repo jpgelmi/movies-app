@@ -1,3 +1,4 @@
+//Hacemos las importaciones
 import React, {useEffect, useState} from 'react'
 import { StyleSheet, Image, View, ScrollView, Text} from 'react-native'
 import {getMovieByIdApi} from "../api/movies"
@@ -12,8 +13,11 @@ import starLight from "../assets/png/starLight.png"
 
 import usePreferences from "../hooks/usePreferences"
 
+//Función para la pelicula en sí
 export default function Movie(props) {
+    //Obtenemos la ruta mediante as props 
     const {route} = props
+    //Creamos el 
     const [movie, setMovie] =useState(null)
     const {id} = route.params
     const [showVideo, setShowVideo] = useState(false)
@@ -28,11 +32,13 @@ export default function Movie(props) {
 
     return (
         <>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator = {false}>
                 <MovieImage posterPath = {movie.poster_path}/>
                 <MovieTrailer setShowVideo = {setShowVideo} idMovie = {id}/>
                 <MovieTitle movie = {movie}/>
                 <MovieRating voteAverage = {movie.vote_average} voteCount = {movie.vote_count}/>
+                <Text style = {styles.overview}>{movie.overview}</Text>
+                <Text style = {[styles.overview, {marginBottom: 30}]}>Fecha de lanzamiento: {movie.release_date} </Text>
             </ScrollView>
             <ModalVideo show = {showVideo} setShow = {setShowVideo}/>
         </>
@@ -89,22 +95,23 @@ function MovieRating(props){
     const { voteCount, voteAverage } = props
     const media = voteAverage / 2;
     const { theme } = usePreferences();
-    console.log(theme)
-    console.log(media)
 
     return(
         <View style = {styles.viewRating}>
             <Rating 
                 type = "custom"
                 ratingImage = {theme === "dark" ? starDark : starLight }
-                ratingColor = "ffc205"
+                ratingColor = "#ffc205"
                 ratingBackgroundColor = {theme === "dark" ? "#192734" : "#f0f0f0"}
                 startingValue = {media}
                 imageSize = {20}
                 style = {{marginRight: 15}}
             />
-            <Text style = {{fontSize : 16, marginRight: 5, color: "#fff"}}>
+            <Text style = {{fontSize : 16, marginRight: 5, color: "#ffc205"}}>
                 {media}
+            </Text>
+            <Text style = {{ fontSize: 12, color: "#8697a5"}}>
+                {voteCount} votos
             </Text>
         </View>
         
@@ -156,6 +163,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         flexDirection: "row",
         alignItems: "center"
+    }, overview:{
+        marginHorizontal:30,
+        marginTop: 20,
+        textAlign: "justify",
+        color: "#8697a5"
     }
 })
 
