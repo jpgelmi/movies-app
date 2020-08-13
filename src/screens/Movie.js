@@ -114,9 +114,7 @@ function MovieRating(props){
                 {voteCount} votos
             </Text>
         </View>
-        
     )
-
 }
 
 const styles = StyleSheet.create({
