@@ -27,7 +27,6 @@ export default function CarouselMulti(props){
             firstItem = {1}
             inactiveSlideScale = {1}
             inactiveSlideOpacity = {1}
-
         />
     )
 } 
